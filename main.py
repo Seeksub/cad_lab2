@@ -16,6 +16,11 @@ if __name__ == "__main__":
         minGroupSize = data['min_group_size']
         maxGroupSize = data['max_group_size'] 
     S = numpy.random.randint(matrMaxVal, size=(matrixSize, matrixSize))
+    for i in range(matrixSize):
+        S[i][i] = 0
+    for i in range(matrixSize):
+        for j in range(matrixSize):
+            S[j][i] = S[i][j]
     print(tabulate(S))
     mgroup = 0
     while minGroupSize < maxGroupSize:

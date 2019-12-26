@@ -8,8 +8,7 @@
     "Parent": [
         {
             "min_group_size": 2,
-            "max_group_size": 10,
-            "min_num_crossover":2
+            "max_group_size": 10
         }
     ]
 }
