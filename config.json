@@ -2,13 +2,14 @@
     "matrix": [
         {
             "max_val": 5,
-            "size": 100
+            "size": 300
         }
     ],
     "Parent": [
         {
-            "min_group_size": 3,
-            "max_group_size": 30
+            "min_group_size": 2,
+            "max_group_size": 160,
+            "min_num_crossover":2
         }
     ]
 }
