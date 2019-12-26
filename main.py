@@ -71,18 +71,12 @@ if __name__ == "__main__":
     for arr in parents:
         if arr[0] >= median:
             arr_forDel.append(arr)
-    # for elem in arr_forDel:
-        # parents.remove(elem)
     parents = arr_forDel
     print('True parents:')
     print(tabulate(parents))
     print('------------')
-    #print(crossoverNum)
-    # parentId = 0
-    plen = len(parents)
+    #plen = len(parents)
     permutationPairs = itertools.permutations(parents, 2)
-    # print("Parents to permutate:")
-    # print(tabulate(permutationPairs))
     random.seed(100)
     bestFit = []
     for pair in permutationPairs:
@@ -92,16 +86,21 @@ if __name__ == "__main__":
         crossoverNum = random.randint(2, matrixSize-2)
         # print("Number of crossovers for pair:")
         # print(crossoverNum)
+        print("Start crossover:")
         for i in range(crossoverNum):
-            headCut = random.randint(0, matrixSize-1)
-            tailCut = random.randint(0, matrixSize-1)
-            while tailCut == headCut:
+            headCut = random.randint(0, matrixSize-2)
+            tailCut = random.randint(1, matrixSize-1)
+            while tailCut == headCut and tailCut < headCut:
                 tailCut = random.randint(0, matrixSize-1)
             for i in range(headCut, tailCut):
                 pair[0][1][0][i],pair[1][1][0][i] = pair[1][1][0][i], pair[0][1][0][i]
                 pair[0][1][1][i],pair[1][1][1][i] = pair[1][1][1][i], pair[0][1][1][i]
-            # print("crossover:")
-            # print([pair[0][1],pair[1][1]])
+            print("Crossover:")
+            print(tabulate(pair[0][1]))
+            print("Between")
+            print(tabulate(pair[1][1]))
+            print("----------")
+            #print([pair[0][1],pair[1][1]])
             #-------
             X = numpy.zeros((mgroup, matrixSize))
             for unit in pair:
@@ -113,13 +112,16 @@ if __name__ == "__main__":
                 # print("-----------------")
                 W = X.dot(S)
                 W = W.dot(X.transpose())
-                # print("W:")
+                print("W:")
+                print(W.trace())
                 # print(tabulate(W))
                 # print("-----------------")
                 if W.trace() > maxW:
                     bestFit = numpy.array([W.trace(), unit[1]])
                     #bestUnit.append([W.trace(), unit[1]])
             # -------
+        print("Stop crossover ----------------")
+        
     print("Best Unit:")
     print(tabulate(bestFit[1]))
     print("Best fit:")
