@@ -1,2 +1,2 @@
-# cad_lab2
+# Knapsack problem generic solver
 Crossover generic algorithm

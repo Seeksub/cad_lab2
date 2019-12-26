@@ -116,4 +116,6 @@ if __name__ == "__main__":
                     #bestUnit.append([W.trace(), unit[1]])
             # -------
     print("Best Unit:")
-    print(bestFit)
+    print(tabulate(bestFit[1]))
+    print("Best fit:")
+    print(bestFit[0])
